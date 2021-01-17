@@ -7,11 +7,11 @@ namespace Desafio
 {
     public class Amount
     {
-        private decimal InitialValue;
+        private double InitialValue;
         private int Time;
-        private decimal IR;
+        private double IR;
 
-        public decimal _IR
+        public double _IR
         {
             get { return IR; }
             set { IR = value; }
@@ -24,22 +24,26 @@ namespace Desafio
         }
 
 
-        public decimal _InitialValue
+        public double _InitialValue
         {
             get { return InitialValue; }
             set { InitialValue = value; }
         }
 
-        private decimal FinalValue()
+        private double FinalValue()
         {
-            var tax = (decimal)Math.Pow((double)(1 + IR), (double)_Time);
+            var tax = (double)Math.Pow((double)(1 + IR), (double)_Time);
             var finalValue = _InitialValue * tax;
+            finalValue = Math.Round(finalValue, 2);
             return finalValue;
         }
 
-        public decimal GetFinalValue()
+        public double GetFinalValue()
         {
             return FinalValue();
+        }
+        protected virtual void Dispose(bool disposing)
+        {
         }
     }
 }
